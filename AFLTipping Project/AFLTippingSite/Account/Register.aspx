@@ -15,7 +15,7 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
+                <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" >test001@gmail.com</asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
                     CssClass="text-danger" ErrorMessage="The email field is required." />
             </div>
@@ -25,7 +25,7 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Password</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="Password"  CssClass="form-control" >Whatever1.</asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
                     CssClass="text-danger" ErrorMessage="The password field is required." />
             </div>
@@ -35,7 +35,7 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Confirm password</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="ConfirmPassword" CssClass="form-control" >Whatever1.</asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="The confirm password field is required." />
                 <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
@@ -47,10 +47,10 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtGivenName" CssClass="col-md-2 control-label">Given name</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="txtGivenName" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="txtGivenName" CssClass="form-control" >john</asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtGivenName"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="Given name is required." />
-                <asp:RegularExpressionValidator runat="server" ControlToValidate="txtGivenName" CssClass="text-danger" ErrorMessage="English letters, apostrophe and hyphen only" ValidationExpression="[a-zA-Z-']{,20}"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator runat="server" ControlToValidate="txtGivenName" CssClass="text-danger" ErrorMessage="English letters, apostrophe and hyphen only" ValidationExpression="^[a-zA-Z-']{1,20}$"></asp:RegularExpressionValidator>
             </div>
         </div>
 
@@ -58,10 +58,10 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtFamilyName" CssClass="col-md-2 control-label">Family name</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="txtFamilyName" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="txtFamilyName" CssClass="form-control" >doe</asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtFamilyName"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="Family name is required." />
-                <asp:RegularExpressionValidator runat="server" ControlToValidate="txtFamilyName" CssClass="text-danger" ErrorMessage="English letters, apostrophe and hyphen only" ValidationExpression="[a-zA-Z-']{,20}"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator runat="server" ControlToValidate="txtFamilyName" CssClass="text-danger" ErrorMessage="English letters, apostrophe and hyphen only" ValidationExpression="^[a-zA-Z-']{1,20}$"></asp:RegularExpressionValidator>
             </div>
         </div>
 
@@ -69,7 +69,7 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtBirthday" CssClass="col-md-2 control-label">Birthday</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="txtBirthday" CssClass="form-control" TextMode="Date" Width="280" />
+                <asp:TextBox runat="server" ID="txtBirthday" CssClass="form-control" Width="280" >01/01/1980</asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtBirthday"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="Birthday is required." />
 
@@ -81,7 +81,7 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtAddress" CssClass="col-md-2 control-label">Address</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="txtAddress" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="txtAddress" CssClass="form-control" >test001 avenue</asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtAddress"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="Address is required." />
 
@@ -92,7 +92,7 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtSuburb" CssClass="col-md-2 control-label">Suburb</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="txtSuburb" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="txtSuburb" CssClass="form-control" >nothingville</asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtSuburb"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="Suburb is required." />
 
@@ -105,7 +105,7 @@
             <div class="col-xs-10">
                 <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control" Width="280">
                     <asp:ListItem>Please Select</asp:ListItem>
-                    <asp:ListItem>NSW</asp:ListItem>
+                    <asp:ListItem Selected="True">NSW</asp:ListItem>
                     <asp:ListItem>QLD</asp:ListItem>
                     <asp:ListItem>SA</asp:ListItem>
                     <asp:ListItem>TAS</asp:ListItem>
@@ -123,7 +123,7 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtPostCode" CssClass="  col-md-2 control-label">Post Code</asp:Label>
             <div class="col-xs-10">
-                <asp:TextBox ID="txtPostCode" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtPostCode" CssClass="form-control" runat="server">0000</asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPostCode"
                     CssClass="text-danger" ErrorMessage="Postcode required"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator runat="server" ControlToValidate="txtPostCode"
@@ -136,7 +136,7 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtMobilePhone" CssClass="col-md-2 control-label">Mobile Phone</asp:Label>
             <div class="col-xs-10">
-                <asp:TextBox ID="txtMobilePhone" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtMobilePhone" CssClass="form-control" runat="server">0404123456</asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtMobilePhone"
                     CssClass="text-danger" ErrorMessage="Mobile Phone required">
                 </asp:RequiredFieldValidator>

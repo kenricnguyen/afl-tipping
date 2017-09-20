@@ -11,7 +11,7 @@ username: admin@AFL-Tipping.com
 password: Pa$$word1
 
 *Group members:
-- Shuo Yang
+- Khoi Ho
 - Connor Arniston
 - Hoang Nguyen
 
