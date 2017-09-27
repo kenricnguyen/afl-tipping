@@ -209,8 +209,8 @@
     </Content>
     <Content Include="Admin\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Tipster\MakeTips.aspx" />
     <Content Include="Admin\ModifyTips.aspx" />
+    <Content Include="Tipster\MakeTips.aspx" />
     <Content Include="Tipster\MyTips.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -391,13 +391,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Tipster\MakeTips.aspx.cs">
-      <DependentUpon>MakeTips.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Tipster\MakeTips.aspx.designer.cs">
-      <DependentUpon>MakeTips.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Admin\ModifyTips.aspx.cs">
       <DependentUpon>ModifyTips.aspx</DependentUpon>
@@ -405,6 +398,13 @@
     </Compile>
     <Compile Include="Admin\ModifyTips.aspx.designer.cs">
       <DependentUpon>ModifyTips.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tipster\MakeTips.aspx.cs">
+      <DependentUpon>MakeTips.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tipster\MakeTips.aspx.designer.cs">
+      <DependentUpon>MakeTips.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tipster\MyTips.aspx.cs">
       <DependentUpon>MyTips.aspx</DependentUpon>

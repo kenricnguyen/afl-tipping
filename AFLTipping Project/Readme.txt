@@ -3,8 +3,8 @@
 *Login details
 
 Tipster
-username: Test@1.com
-password: Test@1.com
+username: User@1.com
+password: User@1.com
 
 Admin
 username: admin@AFL-Tipping.com

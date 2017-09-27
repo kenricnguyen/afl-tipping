@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace M06_Roles
+namespace M06_Roles.Tipster
 {
     public partial class MakeTips : System.Web.UI.Page
     {
