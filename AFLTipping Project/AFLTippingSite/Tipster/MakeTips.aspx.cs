@@ -29,5 +29,10 @@ namespace M06_Roles.Tipster
             //    lblResult.Text="You have tipped all rounds!";
             //}
         }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
