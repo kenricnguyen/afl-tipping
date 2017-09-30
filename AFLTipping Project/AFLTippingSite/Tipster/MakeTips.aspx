@@ -5,7 +5,7 @@
     <hr />
     <asp:MultiView ID="mtvMakeTips" ActiveViewIndex="0" runat="server">
         <asp:View ID="viewSelectTippingRound" runat="server" OnActivate="viewSelectTippingRound_Activate">
-            <h3> Round View</h3>
+            <h3>Round View</h3>
             <br />
             <%--The ‘Activate’ event handler of View 1 should check whether this logged-in tipster has tipped for all rounds. If so, a message should be displayed in View 1 advising the tipster about this, and the dropdown list and the ‘Make Tips’ button should be made invisible.--%>
 
@@ -27,54 +27,47 @@
         <asp:View runat="server">
             <h3>Tipping View</h3>
             <br />
-            <div class="container">
-                <div class="row">
 
-                    <%--row number--%>
-                    <div class="col-md-2">
+            <asp:FormView ID="FormView1" runat="server" DataSourceID="SqlDataSource2" DataKeyName="roundID">
+                <ItemTemplate>
+                    <div class="container">
+                        <div class="row">
 
+                            <%--row number--%>
+                            <div class="col-md-2">
+                                <asp:Label Text="1" CssClass="form-control" runat="server" />
+                            </div>
+
+                            <%--home team--%>
+                            <div class="col-md-2">
+                                <asp:TextBox runat="server"  CssClass="form-control" Text='<%#Eval("home1") %>' />
+                            </div>
+
+                            <%--away team--%>
+                            <div class="col-md-2">
+                                <asp:TextBox runat="server"  CssClass="form-control" Text='<%#Eval("away1") %>' />
+                            </div>
+
+                            <%--result--%>
+                            <div class="col-md-2">
+                                <asp:DropDownList runat="server" CssClass="form-control">
+                                    <asp:ListItem Text="Please select" Selected="True" />
+                                    <asp:ListItem Text="Win" />
+                                    <asp:ListItem Text="Draw" />
+                                    <asp:ListItem Text="Lose" />
+                                </asp:DropDownList>
+                            </div>
+
+                            <%--margin--%>
+                            <div class="col-md-2" >
+                                <asp:TextBox runat="server"  CssClass="form-control" />
+                            </div>
+
+                        </div>
                     </div>
-
-                     <%--home team--%>
-                    <div class="col-md-2">
-
-                    </div>
-
-                     <%--away team--%>
-                    <div class="col-md-2">
-
-                    </div>
-
-                     <%--result--%>
-                    <div class="col-md-2">
-
-                    </div>
-
-                     <%--margin--%>
-                    <div class="col-md-2">
-
-                    </div>
-
-                </div>
-            </div>
-            <asp:FormView ID="FormView1" runat="server"DataSourceID="SqlDataSource2" DataKeyName="roundID">
-                <InsertItemTemplate>
-                    
-                    <asp:Label Text="1" runat="server" />
-                    <asp:TextBox runat="server" Text="<%#Eval("home1") %>" />
-                    <asp:TextBox runat="server" Text="<%#Eval("away1") %>" />
-                    <asp:DropDownList runat="server">
-                        <asp:ListItem Text="Please select" Selected ="True"/>
-                        <asp:ListItem Text="Win" />
-                        <asp:ListItem Text="Draw" />
-                        <asp:ListItem Text="Lose" />
-                    </asp:DropDownList>
-                    <asp:TextBox runat="server" Text="" />
-
-
-                </InsertItemTemplate>
+                </ItemTemplate>
             </asp:FormView>
-            
+
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:AFLTipping %>" SelectCommand="SELECT * FROM [fixtures] WHERE ([roundID] = @roundID)">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="ddlTippingRounds" Name="roundID" PropertyName="SelectedValue" Type="Int32" />
