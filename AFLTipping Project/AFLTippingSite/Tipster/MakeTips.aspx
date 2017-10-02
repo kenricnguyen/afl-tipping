@@ -31,25 +31,55 @@
             <asp:FormView ID="FormView1" runat="server" DataSourceID="SqlDataSource2" DataKeyName="roundID">
                 <ItemTemplate>
                     <div class="container">
+                        <%--Column Titles Row--%>
+
                         <div class="row">
 
                             <%--row number--%>
                             <div class="col-md-2">
-                                <asp:Label Text="1" CssClass="form-control" runat="server" />
+                                <asp:Label Text="Row Number" CssClass="control-label" runat="server" />
                             </div>
 
                             <%--home team--%>
                             <div class="col-md-2">
-                                <asp:TextBox runat="server"  CssClass="form-control" Text='<%#Eval("home1") %>' />
+                                <asp:Label runat="server" CssClass="control-label" Text='Home Team' />
                             </div>
 
                             <%--away team--%>
                             <div class="col-md-2">
-                                <asp:TextBox runat="server"  CssClass="form-control" Text='<%#Eval("away1") %>' />
+                                <asp:Label runat="server" CssClass="control-label" Text='Away Team' />
                             </div>
 
-                            <%--result--%>
+                            <%--Tip--%>
+                            <div class="col-md-3">
+                                <asp:Label runat="server" CssClass="control-label" Text='Tip' />
+                            </div>
+
+                            <%--margin--%>
                             <div class="col-md-2">
+                                <asp:Label runat="server" CssClass="control-label" Text="Margin" />
+                            </div>
+
+                        </div>
+                        <hr />
+
+                        <% for (int i = 0; i < 9; i++)
+                            {
+                        %>
+                        <div class="row">
+
+                            <%--row number--%>
+                            <span class="control-label col-md-2"><%=i+1%></span>
+                            <%--<asp:Label  Text='<%=i+1%>' CssClass="control-label col-md-2" runat="server"  />--%>
+
+                            <%--home team--%>
+                            <asp:Label runat="server" CssClass="control-label col-md-2" Text='<%#Eval("home1") %>' />
+
+                            <%--away team--%>
+                            <asp:Label runat="server" CssClass="control-label col-md-2" Text='<%#Eval("away1") %>' />
+
+                            <%--result--%>
+                            <div class="col-md-3">
                                 <asp:DropDownList runat="server" CssClass="form-control">
                                     <asp:ListItem Text="Please select" Selected="True" />
                                     <asp:ListItem Text="Win" />
@@ -59,11 +89,20 @@
                             </div>
 
                             <%--margin--%>
-                            <div class="col-md-2" >
-                                <asp:TextBox runat="server"  CssClass="form-control" />
+                            <div class="col-md-2">
+                                <asp:TextBox runat="server" CssClass="form-control" />
                             </div>
 
                         </div>
+
+                        <%
+                            } %>
+                        <hr />
+                        <div class="row">
+                            <asp:Button ID="btnSubmitTips" Text="Submit" CssClass="btn btn-primary col-md-2 col-md-offset-5" runat="server" OnClick="btnSubmitTips_Click" />
+                            <asp:Button ID="btnSelectRound2" Text="Select Round" CssClass="btn btn-primary col-md-3 col-md-offset-1" runat="server" OnClick="btnSelectRound2_Click"/>
+                        </div>
+
                     </div>
                 </ItemTemplate>
             </asp:FormView>

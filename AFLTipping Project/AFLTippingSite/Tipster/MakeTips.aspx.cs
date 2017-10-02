@@ -34,5 +34,20 @@ namespace M06_Roles.Tipster
         {
 
         }
+
+        protected void btnSelectRound2_Click(object sender, EventArgs e)
+        {
+            //return to view one for more tipping
+            mtvMakeTips.ActiveViewIndex = 0;
+        }
+
+        protected void btnSubmitTips_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                // If everything Validated according to specs
+                //Do the following
+            }
+        }
     }
 }
