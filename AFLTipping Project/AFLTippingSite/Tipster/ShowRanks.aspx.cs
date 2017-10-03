@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace M06_Roles
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["username"] = Context.User.Identity.GetUserName();
         }
 
         protected void ddlTippedRounds_SelectedIndexChanged(object sender, EventArgs e)

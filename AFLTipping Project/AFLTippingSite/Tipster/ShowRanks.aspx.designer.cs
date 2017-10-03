@@ -13,6 +13,15 @@ namespace M06_Roles {
     public partial class ShowRanks {
         
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// ddlTippedRounds control.
         /// </summary>
         /// <remarks>
