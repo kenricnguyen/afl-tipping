@@ -50,6 +50,7 @@ namespace M06_Roles
             //        lblResult.ForeColor = Color.Red;
             //    }
             //}
+
         }
     }
 }

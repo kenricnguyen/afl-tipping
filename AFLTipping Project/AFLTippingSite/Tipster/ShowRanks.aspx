@@ -13,7 +13,7 @@
         </div>
 
         <div class="col-md-2">
-            <asp:DropDownList ID="ddlTippedRounds" runat="server" DataSourceID="SqlDataSource1" DataTextField="roundID" DataValueField="roundID" CssClass="form-control" OnSelectedIndexChanged="ddlTippedRounds_SelectedIndexChanged" />
+            <asp:DropDownList ID="ddlTippedRounds" runat="server" DataSourceID="SqlDataSource1" DataTextField="roundID" DataValueField="roundID" CssClass="form-control" OnSelectedIndexChanged="ddlTippedRounds_SelectedIndexChanged" AutoPostBack="true"  />
         </div>
 
     </div>
@@ -30,25 +30,17 @@
     </asp:FormView>
 
     <%--display ranking of tipster based on round id selected--%>
-    <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource2"></asp:GridView>
+    <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource2" AutoGenerateColumns="False" CssClass="table">
+        <Columns>
+            <asp:BoundField DataField="Rank" HeaderText="Rank" ReadOnly="True" SortExpression="Rank" />
+            <asp:BoundField DataField="gname" HeaderText="gname" SortExpression="gname" />
+            <asp:BoundField DataField="sname" HeaderText="sname" SortExpression="sname" />
+            <asp:BoundField DataField="ErrorPoints" HeaderText="ErrorPoints" ReadOnly="True" SortExpression="ErrorPoints" />
+        </Columns>
+    </asp:GridView>
 
 
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:AFLTipping %>" SelectCommand="SELECT RANK() OVER (PARTITION BY sub.ErrorPoints ORDER BY sub.ErrorPoints),
-sub.gname, sub.sname, sub.ErrorPoints
-FROM     
-(
-SELECT tipsters.gname, tipsters.sname, 
-abs(tips.game1-results.game1)+abs(tips.game2-results.game2)+
-abs(tips.game3-results.game3)+abs(tips.game4-results.game4)+ 
-abs(tips.game5-results.game5)+abs(tips.game6-results.game6)+
-abs(tips.game7-results.game7)+abs(tips.game8-results.game8)+
-abs(tips.game9-results.game9) as ErrorPoints
-FROM     results INNER JOIN
-                  tips ON results.roundID = tips.roundID INNER JOIN
-                  tipsters ON tips.username = tipsters.username
-WHERE tips.roundID=@roundID
-)
-">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:AFLTipping %>" SelectCommand="SELECT RANK() OVER (ORDER BY (abs(tips.game1 - results.game1) + abs(tips.game2 - results.game2) + abs(tips.game3 - results.game3) + abs(tips.game4 - results.game4) + abs(tips.game5 - results.game5) + abs(tips.game6 - results.game6) + abs(tips.game7 - results.game7) + abs(tips.game8 - results.game8) + abs(tips.game9 - results.game9)) ASC) AS Rank, tipsters.gname, tipsters.sname,( abs(tips.game1 - results.game1) + abs(tips.game2 - results.game2) + abs(tips.game3 - results.game3) + abs(tips.game4 - results.game4) + abs(tips.game5 - results.game5) + abs(tips.game6 - results.game6) + abs(tips.game7 - results.game7) + abs(tips.game8 - results.game8) + abs(tips.game9 - results.game9)) AS ErrorPoints FROM results INNER JOIN tips ON results.roundID = tips.roundID INNER JOIN tipsters ON tips.username = tipsters.username WHERE tips.roundID =@roundID">
         <SelectParameters>
             <asp:ControlParameter ControlID="ddlTippedRounds" Name="roundID" PropertyName="SelectedValue" />
         </SelectParameters>
