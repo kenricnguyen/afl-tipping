@@ -141,7 +141,7 @@
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtMobilePhone"
                     CssClass="text-danger" ErrorMessage="Mobile Phone required">
                 </asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtMobilePhone" ErrorMessage="Must be in the format of 04dddddddd, where 'd' is a digit" CssClass="text-danger" ValidationExpression="(04)\d{8}"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtMobilePhone" ErrorMessage="Must be in the format of 0ndddddddd, where 'n' is 2-4 or 7-8 and 'd' is a digit" CssClass="text-danger" ValidationExpression="^0[2-4,7-8]{1}[1-9]{8}$"></asp:RegularExpressionValidator>
 
                 <%--More regex is required to validate phone number--%>
             </div>
