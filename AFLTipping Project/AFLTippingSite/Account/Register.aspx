@@ -72,7 +72,7 @@
                 <asp:TextBox runat="server" ID="txtBirthday" CssClass="form-control" TextMode="Date" Width="280" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtBirthday"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="Birthday is required." />
-                <%--<asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="The person has to be at least 20 years old" ControlToValidate="txtBirthday" Type="Date" ValueToCompare="<%# DateTime.Today.ToShortDateString()%>" Operator="LessThanEqual"></asp:CompareValidator>--%>
+                <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="The person has to be at least 20 years old" ControlToValidate="txtBirthday" Type="Date" ValueToCompare="09/09/1997" Operator="LessThanEqual" CssClass="text-danger"></asp:CompareValidator>
                 <%--**Need to implement Compare Validator here--%>
                 <%--https://stackoverflow.com/questions/2309912/asp-net-validator-to-compare-two-date-difference-is-not-more-than-12-months--%>
             </div>

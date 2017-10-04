@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,10 +15,12 @@ namespace AFLTippingSite
             if (HttpContext.Current.User.IsInRole("tipster"))
             {
                 tipsterDiv.Visible = true;
+                Session["username"] = Context.User.Identity.GetUserName();
             }
             else if (HttpContext.Current.User.IsInRole("admin"))
             {
                 adminDiv.Visible = true;
+                Session["username"] = Context.User.Identity.GetUserName();
             }
             else
             {

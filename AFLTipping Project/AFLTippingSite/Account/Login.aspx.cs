@@ -39,6 +39,7 @@ namespace AFLTippingSite.Account
                 {
                     case SignInStatus.Success:
                         IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                        Session["username"] = Context.User.Identity.GetUserName();
                         break;
                     case SignInStatus.LockedOut:
                         Response.Redirect("/Account/Lockout");

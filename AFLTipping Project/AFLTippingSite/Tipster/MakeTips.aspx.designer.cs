@@ -13,6 +13,15 @@ namespace M06_Roles.Tipster {
     public partial class MakeTips {
         
         /// <summary>
+        /// lblResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResult;
+        
+        /// <summary>
         /// mtvMakeTips control.
         /// </summary>
         /// <remarks>
@@ -58,39 +67,48 @@ namespace M06_Roles.Tipster {
         protected global::System.Web.UI.WebControls.Button btnSelectRound;
         
         /// <summary>
-        /// lblResult control.
+        /// displayRound control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResult;
+        protected global::System.Web.UI.WebControls.View displayRound;
         
         /// <summary>
-        /// FormView1 control.
+        /// tableHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView FormView1;
+        protected global::System.Web.UI.WebControls.PlaceHolder tableHolder;
         
         /// <summary>
-        /// SqlDataSource2 control.
+        /// btnSubmitTips control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+        protected global::System.Web.UI.WebControls.Button btnSubmitTips;
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// btnSelectRound2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.Button btnSelectRound2;
+        
+        /// <summary>
+        /// RoundDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource RoundDataSource;
     }
 }
