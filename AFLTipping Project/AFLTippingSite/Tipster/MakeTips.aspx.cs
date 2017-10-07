@@ -9,6 +9,7 @@ using System.Data;
 using System.Configuration;
 using System.Web.Configuration;
 using System.Drawing;
+using Microsoft.AspNet.Identity;
 
 namespace M06_Roles.Tipster
 {
@@ -16,13 +17,18 @@ namespace M06_Roles.Tipster
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ddlTippingRounds.DataBind();
+            Session["username"] = Context.User.Identity.GetUserName();
+
             lblResult.Text = "";
-            System.Text.StringBuilder table = new System.Text.StringBuilder();
+
+           
+
+
             if (IsPostBack)
             {
                 try
                 {
+                    System.Text.StringBuilder table = new System.Text.StringBuilder();
                     string round = ddlTippingRounds.SelectedValue;
                     using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["AFLTipping"].ToString()))
                     {
@@ -31,11 +37,11 @@ namespace M06_Roles.Tipster
                         SqlCommand cmd = new SqlCommand(getFixture, con);
                         cmd.Parameters.AddWithValue("@round", round);
                         SqlDataReader reader = cmd.ExecuteReader();
-                        table.Append("<table class=\"table\">");
-                        table.Append("<tr><th>Game</th><th>Home team</th><th>Away team</th><th>Tips</th><th>Margin</th></tr>");
-                        table.Append("</tr>");
                         if (reader.HasRows)
                         {
+                            table.Append("<table class=\"table\">");
+                            table.Append("<tr><th>Game</th><th>Home team</th><th>Away team</th><th>Tips</th><th>Margin</th></tr>");
+                            table.Append("</tr>");
                             while (reader.Read())
                             {
                                 int rowCount = 0;
@@ -48,21 +54,16 @@ namespace M06_Roles.Tipster
                                     table.Append("<td>" + reader[i + 1] + "</td>"); //show away team
 
                                     //show ddl of win, lose or draw options
-                                    table.Append("<td><select name='tipResult" + rowCount + "'" + ">");
+                                    table.Append("<td><select required class='form-control' name='tipResult" + rowCount + "'" + ">");
+                                    table.Append("<option value=\"\">Please select</option>");
                                     table.Append("<option value=\"Win\">Win</option>");
                                     table.Append("<option value=\"Lose\">Lose</option>");
                                     table.Append("<option value=\"Draw\">Draw</option>");
                                     table.Append("</select></ td>");
 
-                                    table.Append("<td><input name='margin" + rowCount + "'" + "type='text' class='form-control' value='8'></ td>");
+                                    //input must be a whole number between 0 and 200
+                                    table.Append("<td><input required name='margin" + rowCount + "'" + "type='number' min='0' max='200' step='1' class='form-control'  placeholder='0-200' ></ td>");
 
-                                    //table.Append("<td><select id=\"tipResult\">");
-                                    //table.Append("<option value=\"Win\">Win</option>");
-                                    //table.Append("<option value=\"Lose\">Lose</option>");
-                                    //table.Append("<option value=\"Draw\">Draw</option>");
-                                    //table.Append("</select></ td>");
-
-                                    //table.Append("<td><input id=\"margin\" type=\"text\" class=\"form - control\"></ td>");
                                     table.Append("</tr>");
                                 }
                             }
@@ -80,61 +81,80 @@ namespace M06_Roles.Tipster
                 }
 
             }
-
+            else
+            {
+                //try to populate data to ddl control for round
+                ddlTippingRounds.DataBind();
+                //if there is no data a message will be shown and the view 1 control will be disabled
+                if (ddlTippingRounds.SelectedValue == "")
+                {
+                    lblResult.Text = "You have tipped them all !";
+                    lblResult.ForeColor = Color.Green;
+                    panelSelectRound.Visible = false;
+                }
+                else
+                {
+                    lblRoundId.Text = "Round " + ddlTippingRounds.SelectedValue;
+                }
+            }
         }
 
         protected void btnSelectRound_Click(object sender, EventArgs e)
         {
-
+            // load view 2: tippingView
             mtvMakeTips.ActiveViewIndex = 1;
+            //enable submit button
+            btnSubmitTips.Enabled = true;
+
+            //change Round id based on current selected value from ddlTippingRounds
+            if (ddlTippingRounds.SelectedValue != "")
+            {
+                lblRoundId.Text ="Round "+ ddlTippingRounds.SelectedValue;
+            }
 
         }
 
 
-        protected void viewSelectTippingRound_Activate(object sender, EventArgs e)
-        {
-            //if (SqlDataSource1.SelectCommand.Contains(String.Empty))
-            //{
-            //    ddlTippingRounds.Visible = false;
-            //    btnSelectRound.Visible = false;
-            //    lblResult.Text="You have tipped all rounds!";
-            //}
-        }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         protected void btnSelectRound2_Click(object sender, EventArgs e)
         {
             //return to view one for more tipping
             mtvMakeTips.ActiveViewIndex = 0;
+            ddlTippingRounds.DataBind();
         }
 
         protected void btnSubmitTips_Click(object sender, EventArgs e)
         {
+            btnSubmitTips.Enabled = false;
+
+            int[] game = new int[10];
+            bool check = false;
+            lblResult.ForeColor = Color.Red;
+            string err = "Please enter a whole number between 0 and 200 for Margin of Game ";
+            for (int i = 1; i < 10; i++)
+            {
+                string tipResult = Request["tipResult" + i];
+                string marginTemp = Request.Form["margin" + i];//get margin input in string format
+                check = int.TryParse(marginTemp, out game[i]); // try to parse it to ensure if it's proper int
+                                                               // check if margin is a int, if not exit function and show error
+                if (!check) { lblResult.Text = err + i; return; }
+                //check if margin is between 0 & 200, if not exit function and show error
+                else if (game[i] > 200 && game[i] < 0) { lblResult.Text = err + i; return; }
+                switch (tipResult)
+                {
+                    case "Win":
+                        //do nothing because by default margin is kept the same
+                        break;
+                    case "Lose":
+                        game[i] = -game[i];
+                        break;
+                    case "Draw":
+                        game[i] = 0;
+                        break;
+                }
+            }
             if (Page.IsValid)
             {
-                int[] game= new int[10];
-
-                for (int i = 1; i < 10; i++)
-                {
-                    string tipResult = Request["tipResult"+i];
-                    switch (tipResult)
-                    {
-                        case "Win":
-                            game[i]=int.Parse( Request.Form["margin" + i]);
-                            break;
-                        case "Lose":
-                            game[i] = -int.Parse(Request.Form["margin" + i]);
-                            break;
-                        case "Draw":
-                            game[i] = 0;
-                            break;
-                    }
-                }
-
                 // If everything Validated according to specs
                 //Do the following
                 // read the entire connection string from Web.config
@@ -179,16 +199,12 @@ namespace M06_Roles.Tipster
                     }
                 }
             }
+            if (ddlTippingRounds.SelectedValue != "")
+            {
+                lblRoundId.Text ="Round "+ ddlTippingRounds.SelectedValue;
+            }
         }
 
-        protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)
-        {
 
-        }
-
-        protected void GridView1_SelectedIndexChanged2(object sender, EventArgs e)
-        {
-
-        }
     }
 }

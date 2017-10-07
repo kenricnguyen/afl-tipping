@@ -13,6 +13,15 @@ namespace M06_Roles.Tipster {
     public partial class MakeTips {
         
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// lblResult control.
         /// </summary>
         /// <remarks>
@@ -40,13 +49,13 @@ namespace M06_Roles.Tipster {
         protected global::System.Web.UI.WebControls.View viewSelectTippingRound;
         
         /// <summary>
-        /// Label1 control.
+        /// panelSelectRound control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Panel panelSelectRound;
         
         /// <summary>
         /// ddlTippingRounds control.
@@ -76,6 +85,15 @@ namespace M06_Roles.Tipster {
         protected global::System.Web.UI.WebControls.View displayRound;
         
         /// <summary>
+        /// lblRoundId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRoundId;
+        
+        /// <summary>
         /// tableHolder control.
         /// </summary>
         /// <remarks>
@@ -85,15 +103,6 @@ namespace M06_Roles.Tipster {
         protected global::System.Web.UI.WebControls.PlaceHolder tableHolder;
         
         /// <summary>
-        /// btnSubmitTips control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmitTips;
-        
-        /// <summary>
         /// btnSelectRound2 control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace M06_Roles.Tipster {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSelectRound2;
+        
+        /// <summary>
+        /// btnSubmitTips control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSubmitTips;
         
         /// <summary>
         /// RoundDataSource control.
