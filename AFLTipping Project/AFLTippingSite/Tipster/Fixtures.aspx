@@ -1,16 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Fixtures.aspx.cs" Inherits="M06_Roles.Tipster.Fixtures" %>
+﻿<%@ Page Title="Fixtures" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Fixtures.aspx.cs" Inherits="M06_Roles.Tipster.Fixtures" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <h2><%: Title %></h2>
+    <hr />
+    <h3>Select a round</h3>
+    <br />
     <p>
+        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="roundID" DataValueField="roundID" CssClass="form-control"></asp:DropDownList>
         <br />
         <br />
-        <asp:Label ID="Label10" runat="server" Text="Please select the round you want to see the fixture: " Font-Bold="True"></asp:Label>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AFLTipping %>" SelectCommand="SELECT [roundID] FROM [fixtures]"></asp:SqlDataSource>
-        <br />
-        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="roundID" DataValueField="roundID"></asp:DropDownList>
-        <br />
-        <br />
-        <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="Button1_Click" />
+        <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="Button1_Click" CssClass="btn btn-primary" />
         <br />
         <br />
     </p>
@@ -40,7 +39,7 @@
                 </tr>
             </ItemTemplate>
             <LayoutTemplate>
-                <table runat="server">
+                <table runat="server" class="table">
                     <tr runat="server">
                         <td runat="server">
                             <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;">
@@ -90,7 +89,7 @@
                 </tr>
             </ItemTemplate>
             <LayoutTemplate>
-                <table runat="server">
+                <table runat="server" class="table">
                     <tr runat="server">
                         <td runat="server">
                             <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;">
@@ -140,7 +139,7 @@
                 </tr>
             </ItemTemplate>
             <LayoutTemplate>
-                <table runat="server">
+                <table runat="server" class="table">
                     <tr runat="server">
                         <td runat="server">
                             <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;">
@@ -190,7 +189,7 @@
                 </tr>
             </ItemTemplate>
             <LayoutTemplate>
-                <table runat="server">
+                <table runat="server" class="table">
                     <tr runat="server">
                         <td runat="server">
                             <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;">
@@ -240,7 +239,7 @@
                 </tr>
             </ItemTemplate>
             <LayoutTemplate>
-                <table runat="server">
+                <table runat="server" class="table">
                     <tr runat="server">
                         <td runat="server">
                             <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;">
@@ -290,7 +289,7 @@
                 </tr>
             </ItemTemplate>
             <LayoutTemplate>
-                <table runat="server">
+                <table runat="server" class="table">
                     <tr runat="server">
                         <td runat="server">
                             <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;">
@@ -340,7 +339,7 @@
                 </tr>
             </ItemTemplate>
             <LayoutTemplate>
-                <table runat="server">
+                <table runat="server" class="table">
                     <tr runat="server">
                         <td runat="server">
                             <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;">
@@ -390,7 +389,7 @@
                 </tr>
             </ItemTemplate>
             <LayoutTemplate>
-                <table runat="server">
+                <table runat="server" class="table">
                     <tr runat="server">
                         <td runat="server">
                             <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;">
@@ -440,7 +439,7 @@
                 </tr>
             </ItemTemplate>
             <LayoutTemplate>
-                <table runat="server">
+                <table runat="server" class="table">
                     <tr runat="server">
                         <td runat="server">
                             <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;">
@@ -463,4 +462,5 @@
         </asp:ListView>
         <br />
     </div>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AFLTipping %>" SelectCommand="SELECT [roundID] FROM [fixtures]"></asp:SqlDataSource>
 </asp:Content>
