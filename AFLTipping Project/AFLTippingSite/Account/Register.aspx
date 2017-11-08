@@ -11,6 +11,8 @@
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
 
+        <asp:Label ID="lblResult" runat="server" ></asp:Label>
+
         <%--Email group--%>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
@@ -141,7 +143,7 @@
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtMobilePhone"
                     CssClass="text-danger" ErrorMessage="Mobile Phone required">
                 </asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtMobilePhone" ErrorMessage="Must be in the format of 0ndddddddd, where 'n' is 2-4 or 7-8 and 'd' is a digit" CssClass="text-danger" ValidationExpression="^0[2-4,7-8]{1}[1-9]{8}$"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtMobilePhone" ErrorMessage="Must be in the format of 0ndddddddd, where 'n' is 2-4 or 7-8 and 'd' is a digit" CssClass="text-danger" ValidationExpression="^0[2-4,7-8]{1}[0-9]{8}$"></asp:RegularExpressionValidator>
 
                 <%--More regex is required to validate phone number--%>
             </div>
